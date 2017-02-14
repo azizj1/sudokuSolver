@@ -1,0 +1,56 @@
+	private class SudokuFocusTraversalPolicy extends FocusTraversalPolicy {
+
+		private JTextField[][] board;
+		
+		public SudokuFocusTraversalPolicy() {
+			board = grid.getGrid();
+		}
+		
+		public Component getComponentAfter(Container aContainer, Component aComponent) {
+			int xCoordinate = getIndexOf(aComponent,"x");
+			int yCoordinate = getIndexOf(aComponent,"y");
+			if (yCoordinate == 8)
+				return board[0][xCoordinate];
+			else
+				return board[yCoordinate+1][xCoordinate];
+		}
+
+		public Component getComponentBefore(Container aContainer, Component aComponent) {
+			int xCoordinate = getIndexOf(aComponent,"x");
+			int yCoordinate = getIndexOf(aComponent,"y");
+			if (yCoordinate == 0)
+				return board[8][xCoordinate];
+			else
+				return board[yCoordinate-1][xCoordinate];
+		}
+
+		public Component getDefaultComponent(Container aContainer) {
+			return board[0][0];
+		}
+
+		public Component getFirstComponent(Container aContainer) {
+			return board[0][0];
+		}
+
+		public Component getLastComponent(Container aContainer) {
+			return board[8][8];
+		}
+		/**
+		 * 
+		 * @param aComponent
+		 * @param coordinate Can be only "x" or "y". "x" will return the column 
+		 * 		number of the component. "y" will return the row number of the
+		 * 		component.
+		 * @return Either the column or row number of the component.
+		 */
+		private int getIndexOf(Component aComponent, String coordinate) {
+			for (int y = 0; y < 9; y++)
+				for (int x = 0; x < 9; x++)
+					if (aComponent == board[y][x])
+						if (coordinate.equalsIgnoreCase("x"))
+							return x;
+						else
+							return y;
+			return -1;
+		}
+	}

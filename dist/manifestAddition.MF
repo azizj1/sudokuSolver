@@ -1,0 +1,5 @@
+Main-Class: sudoku.DriverProgram
+Name: Aziz Javed
+Specification-Title: Sudoku Decipher
+Specification-Version: 3.3 - 8/6/2010
+Sealed: true

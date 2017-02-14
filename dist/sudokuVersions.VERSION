@@ -1,0 +1,56 @@
+Version 1.0:
+	@Date 5/29/10
+	@Addition N/A
+	@Modification N/A
+	@Comment This is the original version. Here is a picture: 
+		http://i180.photobucket.com/albums/x314/Lil_Aziz1/GUIPic3.png
+
+Version 1.1:
+	@Date 6/10/10
+	@Addition N/A
+	@Modification Fixed a bug: sudoku (package) > SudokuDecipher (class) 
+		> exploitChainsInArray(...)
+		When n > 2
+			When cells.get(k).size() < n && chainedCells.size() == 0
+				Added "cells.size() >= n && " to the if statement posted above.
+	@Comment N/A
+
+Version 1.2:
+	@Date 7/21/2010
+	@Addition sudoku > SudokuFrame.class > computeButtons()
+		The button "Decipher" is now the default button. There was
+		no default button before: 
+			this.getRootPane().setDefaultButton(solve);
+	@Modification sudoku > SudokuFrame.class
+		The button "Decipher" and "Clear" are now unfocusable:
+			solve.setFocusable(false);
+			...
+			clear.setFocusable(false);
+	@Comment Learned a lot of new stuff about the focus subsystem.
+
+Version 1.3:
+	@Date 7/25/2010
+	@Addition N/A
+	@Modification sudoku > SudokuDecipher.class > getDecisiveString(...)
+		getDecisiveString now uses StringBuilder to create its String.
+	@Comment It's very inefficient to treat String as a mutable when it
+		it is immutable. 
+
+Version 2.3:
+	@Date 7/26/2010
+	@Addition sudoku > SudokuGrid.class > SudokuGrid()
+		Added the ability to traverse through the board using
+		arrow keys. A new private nested clas was created in the
+		process: private class SudokuTraversalPolicy extends TextAction {
+				....
+			}
+	@Modification N/A
+	@Comment Learned about Key Binding
+Version 3.3:
+	@Date 8/6/2010
+	@Addition sudoku > SudokuWorld.class
+		New methods: loadProperties(); getTimeOfLastExecution();
+		New nested class: TerminalOperation
+		Every time the SudokuDecipher is closed, the current board will be saved.
+	@Modification N/A
+	@Comment Learned about Properties, WindowListeners, and parsing Strings to Calendar/Date.
